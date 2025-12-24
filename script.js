@@ -209,8 +209,8 @@ function checkBingo() {
 
     statusEl.textContent =
       bingoCount === 1
-        ? "🎉 BINGO! Take a shot 🥃"
-        : `🎉 ${bingoCount}× BINGO! Take a shot 🥃`;
+        ? "🎉 BINGO! Gratis Schnaps 🥃"
+        : `🎉 ${bingoCount}× BINGO! Und en Schnaps 🥃`;
 
     playBingoSound(bingoCount);
     document.querySelector(".app").classList.add("bingo");
