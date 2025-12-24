@@ -97,6 +97,7 @@ function createNewBoard() {
   saveState();
   renderBoard();
 }
+let bingoTriggered = false;
 
 function checkBingo() {
   const lines = [];
@@ -116,7 +117,19 @@ function checkBingo() {
     line.every(i => markedState[i])
   );
 
-  statusEl.textContent = bingo ? "🎉 BINGO!" : "";
+  if (bingo && !bingoTriggered) {
+    bingoTriggered = true;
+
+    statusEl.textContent = "🎉 BINGO! Take a shot 🥃";
+    playRandomBingoSound();
+    document.querySelector(".app").classList.add("bingo");
+  }
+
+  if (!bingo) {
+    statusEl.textContent = "";
+    bingoTriggered = false;
+    document.querySelector(".app").classList.remove("bingo");
+  }
 }
 
 resetBtn.addEventListener("click", () => {
@@ -143,4 +156,16 @@ function normalizeCellSize() {
       cell.style.width = maxSize + "px";
       cell.style.height = maxSize + "px";
     });
+  }
+
+  const bingoSounds = [
+    new Audio("sounds/bingo1.mp3"),
+    new Audio("sounds/bingo2.mp3"),
+    new Audio("sounds/bingo3.mp3")
+  ];
+  bingoSounds.forEach(s => s.volume = 0.8);
+  function playRandomBingoSound() {
+    const sound = bingoSounds[Math.floor(Math.random() * bingoSounds.length)];
+    sound.currentTime = 0;
+    sound.play();
   }

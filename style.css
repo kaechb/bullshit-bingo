@@ -91,3 +91,13 @@
     font-weight: 700;
     color: #facc15;
   }
+
+  @keyframes bingoFlash {
+    0% { background-color: #0f172a; }
+    50% { background-color: #166534; }
+    100% { background-color: #0f172a; }
+  }
+
+  .app.bingo {
+    animation: bingoFlash 0.8s ease-in-out 2;
+  }
