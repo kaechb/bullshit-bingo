@@ -30,8 +30,10 @@ const TEXT = {
       reset: "New card",
       bingo1: "🎉 BINGO! Take a shot 🥃",
       bingoN: n => `🎉 ${n}× BINGO! Take a shot 🥃`,
+      finishTitle: "🎉 Bingo Complete 🎉",
       finish:
-        "You won the bingo, there are no prizes, but at least you are drunk now."
+        "You won the bingo, there are no prizes, but at least you are drunk now.",
+      finishBack: "⬅ Back to start"
     },
     gsw: {
       subtitle: "Berühr Situatione wo passiered",
@@ -40,8 +42,10 @@ const TEXT = {
       reset: "Neui Charte",
       bingo1: "🎉 BINGO! Gratis Schnaps 🥃",
       bingoN: n => `🎉 ${n}× BINGO! Und en Schnaps 🥃`,
+      finishTitle: "🎉 Bingo fertiiiig 🎉",
       finish:
-        "Gratuliere, du hesch gwunne! Es gid leider ke Priise aber immerhin bisch jetzt bsoffe."
+        "Gratuliere, du hesch gwunne! Es gid leider ke Priise aber immerhin bisch jetzt bsoffe.",
+      finishBack: "⬅ Zrugg zun Aafang"
     }
   };
 
@@ -256,9 +260,16 @@ function checkBingo() {
   }
   if (checkFinished()) {
     bingoScreen.style.display = "none";
-    document.getElementById("finish-text").textContent =
-      TEXT[currentLanguage].finish;
-    document.getElementById("finish-screen").style.display = "block";
+    document.getElementById("finish-title").textContent =
+    TEXT[currentLanguage].finishTitle;
+
+  document.getElementById("finish-text").textContent =
+    TEXT[currentLanguage].finish;
+
+  document.getElementById("finish-back-btn").textContent =
+    TEXT[currentLanguage].finishBack;
+
+  document.getElementById("finish-screen").style.display = "block";
   }
 }
 function checkFinished() {

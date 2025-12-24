@@ -146,33 +146,49 @@
   #finish-screen {
     position: fixed;
     inset: 0;
+    z-index: 1000;
+
     background-image: url("finish.png");
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
+  /* The card */
   .finish-container {
-    width: 100%;
-    max-width: 420px;
-    padding: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+
+    width: min(420px, calc(100% - 32px));
+    padding: 22px 20px;
     text-align: center;
 
-    background: rgba(15, 23, 42, 0.75);
-    border-radius: 20px;
-    backdrop-filter: blur(6px);
+    background: rgba(15, 23, 42, 0.78);
+    border-radius: 22px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    color: #f8fafc;
   }
 
+  /* Text styling */
   .finish-container h1 {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
   }
 
   .finish-text {
     font-size: 16px;
-    line-height: 1.4;
+    line-height: 1.5;
+    font-weight: 600;
     margin-bottom: 20px;
+  }
+
+  #finish-back-btn {
+    font-weight: 700;
   }
